@@ -1,0 +1,52 @@
+result1 = model.run(Y1_train[0])
+result1 = result1.numpy()
+
+result2 = result1
+result2 = result2[:,:len(Y1_train_prev[0].T)]
+result2 = RstToBinary(result2, 9)
+G1 = nx.from_numpy_matrix(result2)
+nx.draw(G1)
+
+########################################
+
+result1 = model.run(Y1_train[1])
+result1 = result1.numpy()
+
+result2 = result1
+result2 = result2[:,:len(Y1_train_prev[1].T)]
+result2 = RstToBinary(result2, 12)
+G1 = nx.from_numpy_matrix(result2)
+nx.draw(G1)
+
+########################################
+
+result1 = model.run(Y1_train[2])
+result1 = result1.numpy()
+
+result2 = result1
+result2 = result2[:,:len(Y1_train_prev[2].T)]
+result2 = RstToBinary(result2, 15)
+G1 = nx.from_numpy_matrix(result2)
+nx.draw(G1)
+
+########################################
+
+result1 = model.run(Y1_train[7])
+result1 = result1.numpy()
+
+result2 = result1
+result2 = result2[:,:len(Y1_train_prev[7].T)]
+result2 = RstToBinary(result2, 20)
+G1 = nx.from_numpy_matrix(result2)
+nx.draw(G1)
+
+########################################
+
+result1 = model.run(Y1_train[8])
+result1 = result1.numpy()
+
+result2 = result1
+result2 = result2[:,:len(Y1_train_prev[8].T)]
+result2 = RstToBinary(result2, 25)
+G1 = nx.from_numpy_matrix(result2)
+nx.draw(G1)

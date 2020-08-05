@@ -48,14 +48,14 @@ def GraphMasking(Graph, method = 'blockwise', walklength = 1, spreadpwr = 1, sta
 
     return Graph
 
-G = nx.grid_2d_graph(3,3)
-nx.draw(G)
-a1 = nx.adj_matrix(G)
-a2 = nx.to_numpy_matrix(G)
+#G = nx.grid_2d_graph(3,3)
+#nx.draw(G)
+#a1 = nx.adj_matrix(G)
+#a2 = nx.to_numpy_matrix(G)
 #G1 = GraphMasking(G, method = 'blockwise',  startpos = (1,2), walklength = 1, spreadpwr = 1)
 #G2 = GraphMasking(G, method = 'random sampling', portion = 0.1)
 
-G3 = GraphMasking(G, method= 'random edge sampling', portion = 0.1)
+#G3 = GraphMasking(G, method= 'random edge sampling', portion = 0.1)
 
 #nx.draw(G3)
 #a2 = nx.adj_matrix(G3)
