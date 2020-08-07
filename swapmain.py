@@ -3,21 +3,16 @@ import networkx as nx
 import numpy as np
 import matplotlib
 from swapmodel import model,RstToBinarymat,GenerateMaskedPair,maxnode
-from createdata import create_graphs1, graphs_to_matrix
+from createdata import create_graphs_, graphs_to_matrix
 from matplotlib import pyplot as plt
 from stats import degree_stats
 import copy
 from train import *
-import neptune
+#import neptune
 
 
-neptune.init('jinduk/sandbox', "eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vdWkubmVwdHVuZS5haSIsImFwaV91cmwiOiJodHRwczovL3VpLm5lcHR1bmUuYWkiLCJhcGlfa2V5IjoiMDNlYWRiOGUtZGQ4OS00NDY0LTgyZmQtNThjNWU5ZmIzZGViIn0=" )
-neptune.create_experiment(name='minimal_example')
-
-# log some metrics
-
-
-#neptune.log_metric('AUC', 0.96)
+#neptune.init('jinduk/sandbox', "eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vdWkubmVwdHVuZS5haSIsImFwaV91cmwiOiJodHRwczovL3VpLm5lcHR1bmUuYWkiLCJhcGlfa2V5IjoiMDNlYWRiOGUtZGQ4OS00NDY0LTgyZmQtNThjNWU5ZmIzZGViIn0=" )
+#neptune.create_experiment(name='minimal_example')
 
 
 
@@ -28,16 +23,17 @@ args=Args()
 # test-train not splited yet
 graph_name = "grid"
 
-X_train = create_graphs1(graphtype = graph_name)
+#graphs
+X_train = create_graphs_(graphtype = graph_name)
 X_train_copy = copy.deepcopy(X_train)
 X_ref = copy.deepcopy(X_train)
 
-Y1,Y2 = GenerateMaskedPair(X_train, X_train_copy, delportion = 0.3)
+Y1,Y2 = GenerateMaskedPair(X_train, X_train_copy, delportion = 0.2)
 
+#adjacency matrices
+Y1_train_prev = graphs_to_matrix(Y1, Is_BFS = True, Is_randomstart = True)
+Y2_train_prev = graphs_to_matrix(Y2, Is_BFS = True, Is_randomstart = True) # return flatten matrix
 
-Y1_train_prev = graphs_to_matrix(Y1)
-Y2_train_prev = graphs_to_matrix(Y2) # return flatten matrix
-#To be delteted
 
 list_for_check_maxsize = [] # for checking maxnum of input graphs
 
@@ -58,7 +54,6 @@ Y2_train = []
 for i in range(len(Y1_train_prev)):    
     
     maxnumnode = maxnode(list_for_check_maxsize)
-    print(maxnumnode)
     zeropad = np.zeros((maxnumnode**2-len(Y1_train_prev[i].T),1))
     Y1_element = np.concatenate((Y1_train_prev[i].T, zeropad))
     Y2_element = np.concatenate((Y2_train_prev[i].T, zeropad))
@@ -73,7 +68,7 @@ for i in range(len(Y1_train_prev)):
 ''''''''''''''''''       
 Is_train = True
 #epochs
-epochs =400
+epochs = 400
 #batch_size = 5
 
 
