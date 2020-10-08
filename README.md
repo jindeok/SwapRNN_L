@@ -50,5 +50,3 @@ graphs can be selected / revised via
 The training, testing and generated graphs are saved at the folder.
 
 
-## MiscJesse Bettencourt and Harris Chan have made a great [slide](https://duvenaud.github.io/learn-discrete/slides/graphrnn.pdf) introducing GraphRNN in Prof. David Duvenaud’s seminar course [Learning Discrete Latent Structure](https://duvenaud.github.io/learn-discrete/).
-
