@@ -30,9 +30,12 @@ matplotlib, networkx, ...
 
 ## Code description
 For the GraphRNN model:
-'swapmain.py' for running the training & evalutation simultationally.
+GraphRNN codes are implemented based on https://github.com/snap-stanford/GraphRNN
 
-hyperparam:
+run main function codes on:
+'swapmain.py' 
+
+hyperparameters:
 - delportion: edge deletion portion with random deletion
 - alpha,beta,gamma, eta are hyper param for the loss
 alpha: self loss
